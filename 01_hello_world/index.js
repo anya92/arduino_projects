@@ -1,10 +1,11 @@
 const { EtherPortClient } = require('etherport-client')
 const { Board, Led } = require('johnny-five')
+const { host, port } = require('../config')
 
 const board = new Board({
   port: new EtherPortClient({
-    host: '192.168.0.103',
-    port: 3030
+    host,
+    port
   }),
   repl: false,
   timeout: 1e5
