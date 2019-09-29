@@ -1,10 +1,11 @@
 const { EtherPortClient } = require('etherport-client')
 const { Board, Sensor } = require('johnny-five')
+const { host, port } = require('../config')
 
 const board = new Board({
   port: new EtherPortClient({
-    host: '192.168.0.104',
-    port: 3030
+    host,
+    port
   }),
   timeout: 1e5
 })
@@ -14,7 +15,7 @@ board.on('ready', function() {
 
   const photoresistor = new Sensor({
     pin: 'A0',
-    freq: 200
+    freq: 500
   })
 
   board.repl.inject({
